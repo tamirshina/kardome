@@ -128,10 +128,10 @@
                 if (document.querySelectorAll("#video-1 > source").length < 1) {
                     var source1 = document.createElement('source');
                     var source2 = document.createElement('source');
-                    source1.setAttribute('src', 'https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/InteractiveDemoNoSound.mp4');
-                    source1.setAttribute('type', 'video/mp4');
-                    source2.setAttribute('src', 'https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/InteractiveDemoNoSound.webm');
-                    source2.setAttribute('type', 'video/webm');
+                    source2.setAttribute('src', 'https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/InteractiveDemoNoSound.mp4');
+                    source2.setAttribute('type', 'video/mp4');
+                    source1.setAttribute('src', 'https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/InteractiveDemoNoSound.webm');
+                    source1.setAttribute('type', 'video/webm');
                     video.appendChild(source1);
                     video.appendChild(source2);
                 }
