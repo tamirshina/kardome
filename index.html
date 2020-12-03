@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+
+
+
+<section class="section videos-section">
+    <div class="s-container">
+        <div class="video-slider">
+            <div class="vid-slide">
+                <div class="vid-slider-top">
+                    <div>VoIP Communication</div>
+                </div>
+                <div class="slide-inner">
+                    <div class="slide-embed w-embed"><video class="e-video" preload="metadata"
+                            poster="https://uploads-ssl.webflow.com/5f6ccdcd2e8b3e529677788d/5fbaa1caec0945711b90bbd9_POSTER.jpg"
+                            id="video-1" width="100%" height="100%">
+
+                            Your browser does not support HTML video.
+                        </video></div>
+                    <div id="control-1" class="video-controls">
+                        <div>Kardome off</div>
+                        <div class="toggle-wrap">
+                            <div class="switch-embed w-embed"><label class="switch">
+                                    <input type="checkbox" id="video-1-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>Kardome on</div>
+                    </div>
+                    <div id="playPauseA" class="play-pause"><img
+                            src="https://uploads-ssl.webflow.com/5f6ccdcd2e8b3e529677788d/5fb0ea5fbb7484680971a3b8_play.svg"
+                            loading="lazy" alt=""></div>
+                </div>
+            </div>
+            <div class="vid-slide">
+                <div class="vid-slider-top">
+                    <div>Audio Zoom</div>
+                </div>
+                <div class="slide-inner">
+                    <div class="slide-embed w-embed"><video class="e-video" playsinline=""
+                            poster="https://uploads-ssl.webflow.com/5f6ccdcd2e8b3e529677788d/5fbccff3ce775313662a6b69_vid2.jpg"
+                            id="video-2" height="100%" width="100%">
+                            <source
+                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/audiozoomvideos/AudioZoomDemoVideo.webm"
+                                type="video/ogg">
+                            <source
+                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/audiozoomvideos/AudioZoomDemoVideo.mp4"
+                                type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video></div>
+                    <div id="control-2" class="video-controls hide">
+                        <div>Kardome on</div>
+                        <div class="toggle-wrap">
+                            <div class="switch-embed w-embed"><label class="switch">
+                                    <input type="checkbox" id="video-2-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>Kardome off</div>
+                    </div>
+                    <div id="playPauseB" class="play-pause"><img
+                            src="https://uploads-ssl.webflow.com/5f6ccdcd2e8b3e529677788d/5fb0ea5fbb7484680971a3b8_play.svg"
+                            loading="lazy" alt=""></div>
+                </div>
+            </div>
+            <div class="vid-slide">
+                <div class="vid-slider-top">
+                    <div>Multi-speaker VUI</div>
+                </div>
+                <div class="slide-inner">
+                    <div class="slide-embed w-embed"><video class="e-video" playsinline=""
+                            poster="https://uploads-ssl.webflow.com/5f6ccdcd2e8b3e529677788d/5fbccff21d60d53cb2ffc32a_vid3.jpg"
+                            id="video-3" height="100%" width="100%">
+                            <source
+                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/speechtotextincar/Simultaneous+STT+in+a+Car.webm"
+                                type="video/mp4">
+                            <source
+                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/speechtotextincar/Simultaneous+STT+in+a+Car.mp4"
+                                type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video></div>
+                    <div id="control-3" class="video-controls hide">
+                        <div>Kardome on</div>
+                        <div class="toggle-wrap">
+                            <div class="switch-embed w-embed"><label class="switch">
+                                    <input type="checkbox" id="video-3-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>Kardome off</div>
+                    </div>
+                    <div id="playPauseC" class="play-pause"><img
+                            src="https://uploads-ssl.webflow.com/5f6ccdcd2e8b3e529677788d/5fb0ea5fbb7484680971a3b8_play.svg"
+                            loading="lazy" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var canPlay = false;
+
+    $(document).ready(function () {
+        var breakpoint = 991;
+        var video = document.getElementById("video-1");
+        video.load();
+        if ($(document).width() > breakpoint + 1) {
+            while (video.firstChild) {
+                video.removeChild(video.firstChild);
+            }
+            video.addEventListener('canplaythrough', (event) => {
+                canPlay = true;
+                console.log('I think I can play through the entire ')
+            });
+            // Add source tags if not already present
+            if ($(document).width() > breakpoint) {
+                if (document.querySelectorAll("#video-1 > source").length < 1) {
+                    var source1 = document.createElement('source');
+                    var source2 = document.createElement('source');
+                    source1.setAttribute('src', 'https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/InteractiveDemoNoSound.mp4');
+                    source1.setAttribute('type', 'video/mp4');
+                    source2.setAttribute('src', 'https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/InteractiveDemoNoSound.webm');
+                    source2.setAttribute('type', 'video/webm');
+                    video.appendChild(source1);
+                    video.appendChild(source2);
+                }
+            }
+        }
+    });
+    var rev = $('.video-slider');
+    var vidBtns = $('.video-controls');
+    rev.on('init', function (event, slick, currentSlide) {
+        var cur = $(slick.$slides[slick.currentSlide]),
+            next = cur.next(),
+            prev = cur.prev();
+        prev.addClass('slick-sprev');
+        next.addClass('slick-snext');
+        cur.removeClass('slick-snext').removeClass('slick-sprev');
+        cur.find('.video-controls').css("opacity", "1");
+        slick.$prev = prev;
+        slick.$next = next;
+        prev.find('.video-controls').css("opacity", "0");
+        next.find('.video-controls').css("opacity", "0");
+        cur.find('.play-pause').css("pointer-events", "auto");
+        prev.find('.play-pause').css("pointer-events", "none");
+        next.find('.play-pause').css("pointer-events", "none");
+    }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        var cur = $(slick.$slides[nextSlide]);
+        slick.$prev.removeClass('slick-sprev');
+        slick.$next.removeClass('slick-snext');
+        next = cur.next(),
+            prev = cur.prev();
+        prev.addClass('slick-sprev');
+        next.addClass('slick-snext');
+        slick.$prev = prev;
+        slick.$next = next;
+        prev.find('.video-controls').css("opacity", "0");
+        next.find('.video-controls').css("opacity", "0");
+        cur.removeClass('slick-next').removeClass('slick-sprev');
+        cur.find('.video-controls').css("opacity", "1");
+        prev.find('.play-pause').css("pointer-events", "none");
+        next.find('.play-pause').css("pointer-events", "none");
+        cur.find('.play-pause').css("pointer-events", "auto");
+        if (nextSlide != currentSlide) {
+            document.getElementById("video-1").pause();
+            document.getElementById("video-2").pause();
+            document.getElementById("video-3").pause();
+            currentAudioA.pause();
+        }
+    });
+    rev.slick({
+        speed: 1000,
+        arrows: false,
+        dots: false,
+        focusOnSelect: true,
+        infinite: true,
+        centerMode: true,
+        slidesPerRow: 1,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerPadding: '0',
+        swipe: false,
+        customPaging: function (slider, i) {
+            return '';
+        },
+        responsive: [{
+            breakpoint: 991,
+            settings: {
+                dots: true,
+                swipe: true,
+            }
+        }],
+    });
+
+    var vid1 = document.getElementById("video-1");
+    var vid2 = document.getElementById("video-2");
+    var vid3 = document.getElementById("video-3");
+    vid1.onended = function () {
+        vid1.currentTime = 0;
+        document.getElementById("playPauseA").style.opacity = "1";
+    };
+    vid2.onended = function () {
+        vid2.currentTime = 0;
+        document.getElementById("playPauseB").style.opacity = "1";
+    };
+    vid3.onended = function () {
+        vid2.currentTime = 0;
+        document.getElementById("playPauseC").style.opacity = "1";
+    };
+
+    var audio1 = new Audio();
+    var audio2 = new Audio();
+    var audio3 = new Audio();
+    var audio4 = new Audio();
+    var audio5 = new Audio();
+    var audio6 = new Audio();
+
+    audio1.src = "https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/KardomeOFFAudio.mp3";
+    audio2.src = "https://krdmwebsite.s3-eu-west-1.amazonaws.com/interactivevideos/KardomeONAudio.mp3";
+
+    audio1.mediagroup = "vidA"
+    audio2.mediagroup = "vidA"
+
+    var currentAudioA = audio1;
+
+    var videoA = document.getElementById('video-1');
+    var videoB = document.getElementById('video-2');
+    var videoC = document.getElementById('video-3');
+
+    videoA.muted = true;
+
+    var playButtonA = document.getElementById("playPauseA");
+    var playButtonB = document.getElementById("playPauseB");
+    var playButtonC = document.getElementById("playPauseC");
+
+    document.getElementById("video-1-toggle").addEventListener("change", switchAudioA);
+
+    async function playVideo() {
+        if (canPlay == true) {
+            if (videoA.paused == true) {
+                try {
+                    currentAudioA.currentTime = videoA.currentTime;
+                    videoA.play();
+                    currentAudioA.play();
+                    currentAudioA.currentTime = videoA.currentTime;
+                }
+                catch (e) {
+                    console.log(e);
+                }
+                playButtonA.style.opacity = '0';
+
+            } else {
+                currentAudioA.currentTime = videoA.currentTime;
+                videoA.pause();
+                currentAudioA.pause();
+                playButtonA.style.opacity = '1'
+            }
+        } else {
+            console.log("video not ready");
+        }
+    }
+    // Event listener for the play/pause button 1
+    playButtonA.addEventListener("click", playVideo);
+
+    // Event listener for the play/pause button 2
+    playButtonB.addEventListener("click", function () {
+        if (videoB.paused == true) {
+            videoB.play();
+            playButtonB.style.opacity = '0'
+        } else {
+            videoB.pause();
+            playButtonB.style.opacity = '1'
+        }
+    });
+
+    // Event listener for the play/pause button 3
+    playButtonC.addEventListener("click", function () {
+        if (videoC.paused == true) {
+            videoC.play();
+            playButtonC.style.opacity = '0'
+        } else {
+            videoC.pause();
+            playButtonC.style.opacity = '1'
+        }
+    });
+
+    function switchAudioA() {
+        if (currentAudioA == audio1) {
+            videoA.pause();
+            currentAudioA.pause();
+            currentAudioA = audio2;
+            currentAudioA.currentTime = videoA.currentTime;
+            currentAudioA.play();
+            videoA.play();
+            playButtonA.style.opacity = '0'
+        } else {
+            videoA.pause();
+            currentAudioA.pause();
+            currentAudioA = audio1;
+            currentAudioA.currentTime = videoA.currentTime;
+            currentAudioA.play();
+            videoA.play();
+            playButtonA.style.opacity = '0'
+        }
+    }
+</script>
+<style>
+    .video-controls {
+        position: relative;
+        z-index: 10;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        height: 80px;
+        max-width: 600px;
+        margin-top: -30px;
+        margin-right: auto;
+        margin-left: auto;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-radius: 100px;
+        background-color: #dfe2e7;
+        -webkit-transition: opacity 200ms ease;
+        transition: opacity 200ms ease;
+        color: #2b313c;
+        font-size: 22px;
+    }
+
+    .video-controls.hide {
+        display: none;
+    }
+
+    .slide-embed {
+        width: 100%;
+        height: 100%;
+    }
+
+    .vid-slide {
+        position: relative;
+        width: 33.333333333333336%;
+        height: 100%;
+    }
+
+    .video-slider {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .s-container {
+        width: 100%;
+        height: 100%;
+        max-width: 1440px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .play-pause {
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        right: 0%;
+        bottom: 0%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .slide-inner {
+        position: relative;
+        width: 100%;
+        height: 460px;
+    }
+
+    .vid-slider-top {
+        z-index: 1;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        height: 30px;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-color: #17193f;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    .toggle-wrap {
+        position: relative;
+        margin-right: 10px;
+        margin-left: 10px;
+        padding: 4px;
+    }
+
+    .section {
+        position: relative;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .section.videos-section {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background-image: none;
+        background-position: 0% 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .switch-embed {
+        z-index: 1;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    .slick-slider {
+        margin: auto;
+    }
+
+    .slick-list {
+        padding: 10px 22% 60px 22% !important;
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .slick-dots {
+        display: flex !importants;
+        justify-content: center;
+        text-align: right;
+        position: absolute;
+        top: -40px;
+        left: 0;
+        right: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .slick-track {
+        max-width: 100% !important;
+        transform: translate3d(0, 0, 0) !important;
+        perspective: 100px;
+    }
+
+    .slick-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: 0;
+        width: 100% !important;
+        transform: translate3d(0, 0, 0);
+        transition: transform 1s, opacity 0.1s;
+        display: none;
+        float: left;
+        height: 100%;
+        min-height: 1px
+    }
+
+    .slick-snext,
+    .slick-sprev {
+        display: block;
+    }
+
+    .slick-current {
+        position: relative;
+        display: block;
+        z-index: 2;
+        opacity: 1;
+    }
+
+    .slick-snext {
+        transform: translate3d(35%, 0, -10px);
+        z-index: 1;
+        perspective: 1000px;
+        opacity: 1;
+        padding: 0 0 0 35vw;
+    }
+
+    .slick-sprev {
+        transform: translate3d(-35%, 0, -10px);
+        opacity: 1;
+        padding: 0 35vw 0 0;
+    }
+
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent
+    }
+
+    .slick-list:focus {
+        outline: 0
+    }
+
+    .slick-list.dragging {
+        cursor: pointer;
+        cursor: hand
+    }
+
+    .slick-slider .slick-list,
+    .slick-slider .slick-track {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+
+    .slick-track {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .slick-track:after,
+    .slick-track:before {
+        display: table;
+        content: ''
+    }
+
+    .slick-track:after {
+        clear: both
+    }
+
+    .slick-loading .slick-track {
+        visibility: hidden
+    }
+
+    [dir=rtl] .slick-slide {
+        float: right
+    }
+
+    .slick-slide img {
+        display: block
+    }
+
+    .slick-slide.slick-loading img {
+        display: none
+    }
+
+    .slick-slide.dragging img {
+        pointer-events: none
+    }
+
+    .slick-initialized .slick-slide {
+        display: block
+    }
+
+    .slick-loading .slick-slide {
+        visibility: hidden
+    }
+
+    .slick-vertical .slick-slide {
+        display: block;
+        height: auto;
+        border: 1px solid transparent
+    }
+
+    .slick-arrow.slick-hidden {
+        display: none
+    }
+
+    .slick-dots>li {
+        background-color: #dbdbdb;
+        border-radius: 30px;
+        width: 25px;
+        height: 25px;
+        margin: 10px;
+    }
+
+    .slick-dots>li.slick-active {
+        background-color: #000;
+    }
+
+    @media (max-width: 991px) {
+        .slick-dots {
+            display: flex !important;
+        }
+
+        .slick-list {
+            padding: 10px 0 40px 0 !important;
+        }
+
+        .slick-sprev,
+        .slick-snext {
+            transform: translate3d(0, 0, 0) !important;
+        }
+    }
+
+    @media (min-width: 1500px) {
+        .slick-sprev {
+            padding: 0 25vw 0 0;
+        }
+
+        .slick-snext {
+            padding: 0 0 0 25vw;
+        }
+    }
+
+    @media (min-width: 1920px) {
+        .slick-sprev {
+            padding: 0 400px 0 0;
+        }
+
+        .slick-snext {
+            padding: 0 0 0 400px;
+        }
+    }
+
+    .e-video {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        overflow: hidden;
+        object-fit: cover;
+    }
+
+    @media (max-width: 767px) {
+        .e-video {
+            border-radius: 0;
+        }
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 70px;
+        height: 26px;
+        margin: 0;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border: 1px solid #D8D8D8;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        bottom: 0;
+        background-color: #2B313C;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(42px);
+        -ms-transform: translateX(42px);
+        transform: translateX(42px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+</style>
+
+</html>
