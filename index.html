@@ -112,11 +112,22 @@
     </div>
 </section>
 <script>
-    Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
-        get: function () {
-            return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+    var canPlay = false;
+    var breakpoint = 991;
+    $(document).ready(function () {
+
+        var video = document.getElementById("video-1");
+        video.load();
+        if ($(document).width() > breakpoint + 1) {
+            while (video.firstChild) {
+                video.removeChild(video.firstChild);
+            }
+            video.addEventListener('canplay', (event) => {
+                canPlay = true;
+                console.log('I think I can play through the entire ')
+            });
         }
-    })
+    });
     var rev = $('.video-slider');
     var vidBtns = $('.video-controls');
     rev.on('init', function (event, slick, currentSlide) {
@@ -226,17 +237,18 @@
     document.getElementById("video-1-toggle").addEventListener("change", switchAudioA);
 
     function playVideo() {
+
         if (videoA.paused == true) {
             try {
                 currentAudioA.currentTime = videoA.currentTime;
                 videoA.play();
                 currentAudioA.play();
-                playButtonA.style.opacity = '0';
                 currentAudioA.currentTime = videoA.currentTime;
             }
             catch (e) {
                 console.log(e);
             }
+            playButtonA.style.opacity = '0';
         }
         else {
             if (!videoA.paused && videoA.currentTime > 0) {
