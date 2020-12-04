@@ -245,9 +245,8 @@
         if (videoA.paused == true) {
             try {
                 currentAudioA.currentTime = videoA.currentTime;
-                videoA.play();
-                currentAudioA.currentTime = videoA.currentTime;
                 currentAudioA.play();
+                videoA.play();
                 currentAudioA.currentTime = videoA.currentTime;
             }
             catch (e) {
