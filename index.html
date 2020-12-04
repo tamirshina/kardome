@@ -240,12 +240,12 @@
 
     document.getElementById("video-1-toggle").addEventListener("change", switchAudioA);
 
-    function playVideo() {
+    async function playVideo() {
 
         if (videoA.paused == true) {
             try {
                 currentAudioA.currentTime = videoA.currentTime;
-                videoA.play();
+                await videoA.play();
                 currentAudioA.play();
                 currentAudioA.currentTime = videoA.currentTime;
             }
