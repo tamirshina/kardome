@@ -243,7 +243,7 @@
     function playVideo() {
 
         if (videoA.paused == true) {
-            if (videoA.currentTime > 0 && $(document).width() > breakpoint) {
+            if (videoA.currentTime > 0 && $(document).width() < breakpoint) {
                 currentAudioA.currentTime = videoA.currentTime;
                 videoA.play();
                 setTimeout(function () { }, 500)
