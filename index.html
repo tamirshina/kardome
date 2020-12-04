@@ -24,10 +24,10 @@
                             poster="https://uploads-ssl.webflow.com/5f6ccdcd2e8b3e529677788d/5fbaa1caec0945711b90bbd9_POSTER.jpg"
                             id="video-1" width="100%" height="100%">
                             <source
-                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/audiozoomvideos/AudioZoomDemoVideo.webm"
-                                type="video/ogg">
+                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/speechtotextincar/Simultaneous+STT+in+a+Car.webm"
+                                type="video/webm">
                             <source
-                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/audiozoomvideos/AudioZoomDemoVideo.mp4"
+                                src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/speechtotextincar/Simultaneous+STT+in+a+Car.mp4"
                                 type="video/mp4">
 
                             Your browser does not support HTML video.
@@ -58,7 +58,7 @@
                             id="video-2" height="100%" width="100%">
                             <source
                                 src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/audiozoomvideos/AudioZoomDemoVideo.webm"
-                                type="video/ogg">
+                                type="video/webm">
                             <source
                                 src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/audiozoomvideos/AudioZoomDemoVideo.mp4"
                                 type="video/mp4">
@@ -90,7 +90,7 @@
                             id="video-3" height="100%" width="100%">
                             <source
                                 src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/speechtotextincar/Simultaneous+STT+in+a+Car.webm"
-                                type="video/mp4">
+                                type="video/webm">
                             <source
                                 src="https://krdmwebsite.s3-eu-west-1.amazonaws.com/speechtotextincar/Simultaneous+STT+in+a+Car.mp4"
                                 type="video/mp4">
@@ -245,7 +245,7 @@
             try {
                 currentAudioA.currentTime = videoA.currentTime;
                 videoA.play();
-                currentAudioA.play();
+                //currentAudioA.play();
                 currentAudioA.currentTime = videoA.currentTime;
             }
             catch (e) {
@@ -256,7 +256,7 @@
         } else {
             currentAudioA.currentTime = videoA.currentTime;
             videoA.pause();
-            currentAudioA.pause();
+            //currentAudioA.pause();
             playButtonA.style.opacity = '1'
         }
     }
