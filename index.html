@@ -113,6 +113,7 @@
 </section>
 <script>
     document.getElementById("video-1").load();
+
     var rev = $('.video-slider');
     var vidBtns = $('.video-controls');
     rev.on('init', function (event, slick, currentSlide) {
@@ -219,11 +220,13 @@
     var playButtonB = document.getElementById("playPauseB");
     var playButtonC = document.getElementById("playPauseC");
 
+    var isReady = videoA.readyState;
+
     document.getElementById("video-1-toggle").addEventListener("change", switchAudioA);
 
     function playVideo() {
 
-        if (videoA.paused == true) {
+        if (videoA.paused == true && isReady > 2) {
             try {
                 currentAudioA.currentTime = videoA.currentTime;
                 videoA.play();
