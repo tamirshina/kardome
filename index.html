@@ -288,6 +288,9 @@
     });
 
     function switchAudioA() {
+        if (videoA.paused) {
+            return;
+        }
         if (currentAudioA == audio1) {
             videoA.pause();
             currentAudioA.pause();
