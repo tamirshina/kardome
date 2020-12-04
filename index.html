@@ -112,22 +112,7 @@
     </div>
 </section>
 <script>
-    var canPlay = false;
-    var breakpoint = 991;
-    $(document).ready(function () {
 
-        var video = document.getElementById("video-1");
-        video.load();
-        if ($(document).width() > breakpoint + 1) {
-            while (video.firstChild) {
-                video.removeChild(video.firstChild);
-            }
-            video.addEventListener('canplay', (event) => {
-                canPlay = true;
-                console.log('I think I can play through the entire ')
-            });
-        }
-    });
     var rev = $('.video-slider');
     var vidBtns = $('.video-controls');
     rev.on('init', function (event, slick, currentSlide) {
