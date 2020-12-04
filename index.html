@@ -256,11 +256,13 @@
         }
 
         else {
-            //currentAudioA.currentTime = videoA.currentTime;
-            videoA.pause();
-            currentAudioA.pause();
-            currentAudioA.currentTime = videoA.currentTime;
-            playButtonA.style.opacity = '1'
+            if (!videoA.paused) {
+                videoA.pause();
+                currentAudioA.pause();
+                currentAudioA.currentTime = videoA.currentTime;
+                playButtonA.style.opacity = '1'
+            }
+
         }
     }
     // Event listener for the play/pause button 1
