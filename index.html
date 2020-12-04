@@ -247,7 +247,7 @@
                 currentAudioA.currentTime = videoA.currentTime;
                 videoA.play();
                 currentAudioA.play();
-                currentAudioA.currentTime = videoA.currentTime;
+                //currentAudioA.currentTime = videoA.currentTime;
             }
             catch (e) {
                 console.log(e);
@@ -256,9 +256,10 @@
         }
 
         else {
-            currentAudioA.currentTime = videoA.currentTime;
+            //currentAudioA.currentTime = videoA.currentTime;
             videoA.pause();
             currentAudioA.pause();
+            currentAudioA.currentTime = videoA.currentTime;
             playButtonA.style.opacity = '1'
         }
     }
