@@ -112,7 +112,9 @@
     </div>
 </section>
 <script>
-
+    $(document).ready(function () {
+        document.getElementById("video-1").load();
+    });
     var rev = $('.video-slider');
     var vidBtns = $('.video-controls');
     rev.on('init', function (event, slick, currentSlide) {
