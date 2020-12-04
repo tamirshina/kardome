@@ -243,23 +243,16 @@
     function playVideo() {
 
         if (videoA.paused == true) {
-            if ($(document).width() < breakpoint && videoA.currentTime > 0) {
-                videoA.play();
+            try {
                 currentAudioA.currentTime = videoA.currentTime;
+                videoA.play();
                 currentAudioA.play();
-                playButtonA.style.opacity = '0';
-            } else {
-                try {
-                    currentAudioA.currentTime = videoA.currentTime;
-                    videoA.play();
-                    currentAudioA.play();
-                    currentAudioA.currentTime = videoA.currentTime;
-                }
-                catch (e) {
-                    console.log(e);
-                }
-                playButtonA.style.opacity = '0';
+                currentAudioA.currentTime = videoA.currentTime;
             }
+            catch (e) {
+                console.log(e);
+            }
+            playButtonA.style.opacity = '0';
         }
         else {
             if (!videoA.paused && videoA.currentTime > 0) {
