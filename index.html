@@ -225,16 +225,23 @@
 
     function playVideo() {
         if (videoA.paused == true) {
-            try {
+            if ($(document).width() < 991 && videoA.currentTime > 0) {
                 currentAudioA.currentTime = videoA.currentTime;
-                videoA.play();
                 currentAudioA.play();
-                currentAudioA.currentTime = videoA.currentTime;
+                videoA.play();
+
+            } else {
+                try {
+                    currentAudioA.currentTime = videoA.currentTime;
+                    videoA.play();
+                    currentAudioA.play();
+                    currentAudioA.currentTime = videoA.currentTime;
+                }
+                catch (e) {
+                    console.log(e);
+                }
+                playButtonA.style.opacity = '0';
             }
-            catch (e) {
-                console.log(e);
-            }
-            playButtonA.style.opacity = '0';
         }
         else {
             if (!videoA.paused && videoA.currentTime > 0) {
