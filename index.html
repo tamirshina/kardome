@@ -126,7 +126,7 @@
             while (video.firstChild) {
                 video.removeChild(video.firstChild);
             }
-            video.addEventListener('canplaythrough', (event) => {
+            video.addEventListener('canplay', (event) => {
                 canPlay = true;
                 console.log('I think I can play through the entire ')
             });
@@ -254,7 +254,7 @@
                     console.log(e);
                 }
                 playButtonA.style.opacity = '0';
-            }
+            } else { console.log("video not ready"); }
 
         } else {
             currentAudioA.currentTime = videoA.currentTime;
