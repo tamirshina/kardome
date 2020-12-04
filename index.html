@@ -245,8 +245,8 @@
         if (videoA.paused == true) {
             try {
                 currentAudioA.currentTime = videoA.currentTime;
-                currentAudioA.play();
                 videoA.play();
+                currentAudioA.play();
                 currentAudioA.currentTime = videoA.currentTime;
             }
             catch (e) {
@@ -255,7 +255,7 @@
             playButtonA.style.opacity = '0';
         }
         else {
-            if (!videoA.paused) {
+            if (!videoA.paused && videoA.currentTime > 0) {
                 videoA.pause();
                 currentAudioA.pause();
                 currentAudioA.currentTime = videoA.currentTime;
