@@ -220,13 +220,11 @@
     var playButtonB = document.getElementById("playPauseB");
     var playButtonC = document.getElementById("playPauseC");
 
-    var isReady = videoA.readyState;
-
     document.getElementById("video-1-toggle").addEventListener("change", switchAudioA);
 
     function playVideo() {
 
-        if (videoA.paused == true && isReady > 2) {
+        if (videoA.paused == true) {
             try {
                 currentAudioA.currentTime = videoA.currentTime;
                 videoA.play();
